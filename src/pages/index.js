@@ -1,6 +1,7 @@
 import React from "react"
 import { Router } from '@reach/router';
 import Unity, { UnityContent } from "react-unity-webgl";
+import { Helmet } from 'react-helmet';
 
 import 'bulma/bulma.sass';
 import 'font-awesome/css/font-awesome.css';
@@ -34,6 +35,11 @@ class Index extends React.Component {
   render() {
     return (
       <div style={{ height: '100vh'}}>
+        <Helmet>
+            <title>Herbert Joseph</title>
+            <meta name="description" content="Herbert Joseph - Senior Software Engineer - Rubyist" />
+        </Helmet>
+
         {this.state.displayUnityCanvas && (
           <Unity unityContent={this.state.unityContent} />
         )}
