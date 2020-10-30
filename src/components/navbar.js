@@ -51,11 +51,6 @@ class Navbar extends React.Component {
 
         <div className="navbar-right align-section">
           <div className="social">
-            <a href="https://twitter.com/JTechniquea2z" className="icon-button twitter" target="noreferrer">
-              <i className="icon-twitter fa fa-twitter"></i>
-              <span></span>
-            </a>
-
             <a href="https://github.com/zoegod911/" className="icon-button github" target="_blank" rel="noreferrer">
               <i className="icon-github fa fa-github"></i>
               <span></span>
