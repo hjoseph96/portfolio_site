@@ -87,7 +87,7 @@ class Resume extends React.Component {
                   </div>
 
               		<p className="card-header-title">
-                    Arcane Arcade - CTO
+                    Arcane Arcade - Senior Software Engineer
               		</p>
 
                   <div className="timeframe">
@@ -252,7 +252,7 @@ class Resume extends React.Component {
                   </div>
 
                   <p className="card-header-title">
-                    Politech
+                    Politech - Full Stack Engineer
                   </p>
 
                   <div className="timeframe">
@@ -318,7 +318,7 @@ class Resume extends React.Component {
                   </div>
 
                   <p className="card-header-title">
-                    VOS Digital Group
+                    VOS Digital Group - Ruby Engineer
                   </p>
 
                   <div className="timeframe">
@@ -385,7 +385,7 @@ class Resume extends React.Component {
                   </div>
 
                   <p className="card-header-title">
-                    Canopy
+                    Canopy - Junior Software Engineer
                   </p>
 
                   <div className="timeframe">
