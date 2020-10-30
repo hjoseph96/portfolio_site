@@ -1,0 +1,175 @@
+@keyframes scale-line {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes pulse-dot {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.svg-triangle-loader {
+  height: 74px;
+  width: 64px;
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  animation-play-state: running;
+
+  .svg-inner-stroke {
+    animation: scale-line 1s ease-out infinite;
+    transform-origin: 32px 36px 0;
+  }
+  .svg-dot {
+    animation: pulse-dot 1s linear infinite;
+  }
+
+  &:hover {
+    .svg-inner-stroke, .svg-dot {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.main-nav {
+  top: 0;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0,0,0,0.67);
+  border-bottom: 1px solid rgba(white, 0.18);
+
+  .align-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+
+    .box:first-child > span { margin-right: auto; }
+
+    .box:last-child  > span { margin-left: auto;  }
+
+  }
+
+  .navbar-center {
+    display: flex;
+
+    a { height: 75px; }
+    .name {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      position: relative;
+      top: 20px;
+      color: whitesmoke;
+    }
+  }
+
+  .navbar-left, .navbar-right {
+    padding: 1.2rem 2em;
+    display: flex;
+
+    .links {
+      a {
+        padding-left: 2em;
+        color: whitesmoke;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .social {
+      display: flex;
+
+      div {
+        padding-left: 2em;
+      }
+    }
+  }
+
+  /* Wrapper */
+  .icon-button {
+      background-color: transparent;
+      border-radius: 3.6rem;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 2.0rem;
+      line-height: 3.6rem;
+      margin: 0 5px;
+      position: relative;
+      text-align: center;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+      width: 1.2em;
+      margin-left: 1.2rem;
+
+      &:first-of-type {
+        margin-left: 3rem;
+      }
+  }
+
+  /* Circle */
+  .icon-button span {
+      border-radius: 0;
+      display: block;
+      height: 0;
+      left: 50%;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      -webkit-transition: all 0.3s;
+         -moz-transition: all 0.3s;
+           -o-transition: all 0.3s;
+              transition: all 0.3s;
+      width: 0;
+  }
+  .icon-button:hover span {
+      width: 3.6rem;
+      height: 3.6rem;
+      border-radius: 3.6rem;
+      margin: -1.8rem;
+  }
+  .twitter span {
+      background-color: #4099ff;
+  }
+  .github span {
+      background-color: #24292e;
+  }
+
+  /* Icons */
+  .icon-button i {
+    background: none;
+    left: -9px;
+    font-size: 0.8em;
+    position: absolute;
+    top: 6px;
+    transition: all 0.3s;
+    width: 3.6rem;
+    z-index: 10;
+      -webkit-transition: all 0.3s;
+         -moz-transition: all 0.3s;
+           -o-transition: all 0.3s;
+              transition: all 0.3s;
+  }
+  .icon-button .icon-twitter {
+      color: #4099ff;
+  }
+  .icon-button .icon-github {
+      color: whitesmoke;
+  }
+  .icon-button:hover .icon-twitter,
+  .icon-button:hover .icon-github {
+      color: white;
+  }
+}

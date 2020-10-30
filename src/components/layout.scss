@@ -1,0 +1,15 @@
+.layout {
+  margin: auto;
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 60vh;
+  width: 55vw;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  background-color: rgba(#737271, 0.93);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  justify-content: center;
+}
