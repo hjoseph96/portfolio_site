@@ -25,8 +25,17 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
+    // Phones and tablets get a build with textures capped at 512px: iOS WebGL
+    // can't use the desktop DXT textures, so it expands them in memory and the
+    // tab gets killed.
+    const ua = navigator.userAgent;
+    const isMobile =
+      /iPhone|iPad|iPod|Android/i.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1); // iPadOS
+    const buildConfig = isMobile ? 'test.mobile.json' : 'test.json';
+
     const unityContent = new UnityContent(
-      `${window.location.origin}/Game/Build/test.json`,
+      `${window.location.origin}/Game/Build/${buildConfig}`,
       `${window.location.origin}/Game/Build/UnityLoader.js`
     );
 
