@@ -116,7 +116,7 @@ const recentWork = [
     detail: 'Focus Haitian Music Inc. (FOHAMU) is a charitable, tax-exempt 501(c)(3) organization dedicated to the growth and empowerment of Haitian youth and creating a brighter future for Haiti\'s tomorrow.',
     responsibilities: [
       'Built and maintain fohamu.com, the organization\'s website, on Ruby on Rails 6.1.',
-      'Support the organization\'s work with Institution Chrétienne d\'Haïti (ICDH), a K-12 school in Carrefour, Haiti, supported solely by FOHAMU.',
+      <>Support the organization's work with <a href="https://ecoleicdh.org/" target="_blank" rel="noopener noreferrer">Institution Chrétienne d'Haïti (ICDH)</a>, a K-12 school in Carrefour, Haiti, supported solely by FOHAMU.</>,
       'Support the FBLA Chapter Haiti program, the sole school representing Haiti at Future Business Leaders of America for 10 years running.',
     ],
     tech: ['ruby'],
