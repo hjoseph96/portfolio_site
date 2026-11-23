@@ -533,7 +533,7 @@ class Resume extends React.Component {
                     <footer className="card-footer">
                       <p className="card-footer-item">
                         <span>
-                          <a href="https://www.icaromediagroup.com/en/" target="_blank">View</a>
+                          <a href="https://www.icaromediagroup.com/" target="_blank">View</a>
                         </span>
                       </p>
                     </footer>
@@ -653,7 +653,7 @@ class Resume extends React.Component {
                     <footer className="card-footer">
                       <p className="card-footer-item">
                         <span>
-                          <a href="https://turing.io/" target="_blank">View</a>
+                          <a href="https://www.turing.edu/" target="_blank">View</a>
                         </span>
                       </p>
                     </footer>

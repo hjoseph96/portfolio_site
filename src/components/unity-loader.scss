@@ -1,0 +1,63 @@
+$loader-accent: #FF6700;
+
+.unity-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 50; // above the Unity canvas, below the navbar (100)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  background-color: #1c1c1b;
+  opacity: 1;
+  transition: opacity 0.6s ease, visibility 0s linear 0s;
+
+  &--done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+  }
+}
+
+.unity-loader__panel {
+  width: min(420px, 100%);
+  text-align: center;
+}
+
+.unity-loader__label {
+  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.unity-loader__track {
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.unity-loader__fill {
+  height: 100%;
+  background-color: $loader-accent;
+  transform-origin: left center;
+  transition: transform 0.25s ease-out;
+}
+
+.unity-loader__percent {
+  margin-top: 0.75rem;
+  color: #fff;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .unity-loader,
+  .unity-loader--done,
+  .unity-loader__fill {
+    transition: none;
+  }
+}
