@@ -15,7 +15,7 @@ class Contact extends React.Component {
       <Layout>
         <h1>Contact</h1>
 
-        <h1>I am reachable at <b>techniquea2z@gmail.com</b></h1>
+        <h1>I am reachable at <b>herbert@makeshift.software</b></h1>
       </Layout>
     )
   }

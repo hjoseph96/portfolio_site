@@ -13,3 +13,23 @@
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
   justify-content: center;
 }
+
+// Tablet: give the panel more of the screen.
+@media screen and (max-width: 1024px) {
+  .layout {
+    width: 80vw;
+  }
+}
+
+// Mobile: fill the space under the 76px navbar, with a 1rem gutter.
+@media screen and (max-width: 640px) {
+  .layout {
+    margin: 0;
+    top: calc(76px + 1rem);
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    height: auto;
+  }
+}

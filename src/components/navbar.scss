@@ -37,48 +37,71 @@
   }
 }
 
+// One fixed height at every width; contents scale to fit instead of wrapping.
+$nav-height: 76px;
+
 .main-nav {
   top: 0;
-  width: 100vw;
+  width: 100%;
+  height: $nav-height;
+  box-sizing: border-box;
   position: absolute;
   display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
   justify-content: space-between;
+  z-index: 100;
   background-color: rgba(0,0,0,0.67);
   border-bottom: 1px solid rgba(white, 0.18);
 
   .align-section {
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
     display: flex;
-    justify-content: center;
-
-
-    .box:first-child > span { margin-right: auto; }
-
-    .box:last-child  > span { margin-left: auto;  }
-
+    align-items: center;
   }
 
   .navbar-center {
-    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    gap: clamp(4px, 1.2vw, 12px);
 
-    a { height: 75px; }
+    a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
     .name {
-      font-size: 18px;
+      font-size: clamp(11px, 2.4vw, 18px);
       text-transform: uppercase;
       letter-spacing: 0.4px;
-      position: relative;
-      top: 20px;
+      white-space: nowrap;
       color: whitesmoke;
     }
   }
 
+  .svg-triangle-loader {
+    width: clamp(40px, 8vw, 64px);
+    height: clamp(46px, 9.25vw, 74px);
+  }
+
   .navbar-left, .navbar-right {
-    padding: 1.2rem 2em;
-    display: flex;
+    padding: 0 clamp(0.75rem, 3vw, 2em);
+  }
+
+  .navbar-left {
+    justify-content: center;
 
     .links {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.75rem, 3vw, 2em);
+
       a {
-        padding-left: 2em;
+        font-size: clamp(12px, 2.2vw, 16px);
+        white-space: nowrap;
         color: whitesmoke;
 
         &:hover {
@@ -86,90 +109,151 @@
         }
       }
     }
+  }
+
+  .navbar-right {
+    justify-content: center;
 
     .social {
       display: flex;
-
-      div {
-        padding-left: 2em;
-      }
+      align-items: center;
+      gap: clamp(0.25rem, 1vw, 0.75rem);
     }
   }
 
   /* Wrapper */
   .icon-button {
-      background-color: transparent;
-      border-radius: 3.6rem;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 2.0rem;
-      line-height: 3.6rem;
-      margin: 0 5px;
-      position: relative;
-      text-align: center;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
-      width: 1.2em;
-      margin-left: 1.2rem;
-
-      &:first-of-type {
-        margin-left: 3rem;
-      }
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    width: 1.8em;
+    height: 1.8em;
+    position: relative;
+    user-select: none;
   }
 
   /* Circle */
   .icon-button span {
-      border-radius: 0;
-      display: block;
-      height: 0;
-      left: 50%;
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      -webkit-transition: all 0.3s;
-         -moz-transition: all 0.3s;
-           -o-transition: all 0.3s;
-              transition: all 0.3s;
-      width: 0;
+    border-radius: 50%;
+    display: block;
+    height: 0;
+    width: 0;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
   }
   .icon-button:hover span {
-      width: 3.6rem;
-      height: 3.6rem;
-      border-radius: 3.6rem;
-      margin: -1.8rem;
+    width: 100%;
+    height: 100%;
   }
   .twitter span {
-      background-color: #4099ff;
+    background-color: #4099ff;
   }
   .github span {
-      background-color: #24292e;
+    background-color: #24292e;
+  }
+  .makeshift span {
+    background-color: rgba(229, 83, 75, 0.2); // #E5534B at 20%
   }
 
   /* Icons */
   .icon-button i {
-    background: none;
-    left: -9px;
     font-size: 0.8em;
-    position: absolute;
-    top: 6px;
-    transition: all 0.3s;
-    width: 3.6rem;
+    position: relative;
     z-index: 10;
-      -webkit-transition: all 0.3s;
-         -moz-transition: all 0.3s;
-           -o-transition: all 0.3s;
-              transition: all 0.3s;
+    transition: all 0.3s;
   }
   .icon-button .icon-twitter {
-      color: #4099ff;
+    color: #4099ff;
   }
   .icon-button .icon-github {
-      color: whitesmoke;
+    color: whitesmoke;
+  }
+  .icon-button .icon-makeshift {
+    width: auto;
+    height: 0.75em;
+    position: relative;
+    z-index: 10;
   }
   .icon-button:hover .icon-twitter,
   .icon-button:hover .icon-github {
-      color: white;
+    color: white;
+  }
+
+  /* Burger (mobile only) */
+  .burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 0 8px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+
+    span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: whitesmoke;
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    &.is-open {
+      span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      span:nth-child(2) { opacity: 0; }
+      span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    &:focus-visible {
+      outline: 2px solid whitesmoke;
+      outline-offset: 2px;
+    }
+  }
+
+  /* Drop-down panel under the bar (mobile only) */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: rgba(0,0,0,0.85);
+    border-bottom: 1px solid rgba(white, 0.18);
+
+    a {
+      padding: 14px clamp(0.75rem, 3vw, 2em);
+      color: whitesmoke;
+      font-size: 16px;
+
+      & + a { border-top: 1px solid rgba(white, 0.1); }
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  // Mobile: links move into the left burger menu.
+  @media screen and (max-width: 640px) {
+    .navbar-left {
+      justify-content: flex-start;
+
+      .links { display: none; }
+    }
+
+    .navbar-right { justify-content: flex-end; }
+
+    .burger { display: flex; }
+
+    .mobile-menu.is-open { display: flex; }
   }
 }

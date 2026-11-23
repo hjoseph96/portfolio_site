@@ -1,6 +1,14 @@
+// Fluid type scale in rem: each step grows smoothly between a mobile minimum and a desktop maximum.
+$type-xs:   clamp(0.8125rem, 0.75rem + 0.25vw, 0.9375rem); // 13 → 15px
+$type-sm:   clamp(0.875rem, 0.8rem + 0.3vw, 1rem);         // 14 → 16px
+$type-base: clamp(0.9375rem, 0.875rem + 0.25vw, 1rem);     // 15 → 16px
+$type-md:   clamp(1rem, 0.9rem + 0.4vw, 1.125rem);         // 16 → 18px
+$type-lg:   clamp(1.125rem, 1rem + 0.5vw, 1.25rem);        // 18 → 20px
+$type-xl:   clamp(1.125rem, 0.95rem + 0.7vw, 1.375rem);    // 18 → 22px
+
 .layout h1 {
   padding: 1.44em 1em;
-  font-size: 20px;
+  font-size: $type-lg;
   color: whitesmoke;
   font-weight: 300;
 }
@@ -24,14 +32,19 @@ ul.past-work {
 
     .timeframe {
       display: flex;
+      flex-shrink: 0;
+      white-space: nowrap;
       margin-top: 39px;
+      font-size: $type-xs;
       font-weight: 100;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.05em;
 
       .divider { margin: 0 7px; }
     }
 
     .brand {
+      position: relative;
+      flex-shrink: 0;
       width: 115px;
       margin-right: 33px;
 
@@ -45,7 +58,7 @@ ul.past-work {
           position: absolute;
           top: 37px;
           width: 40px;
-          left: 59px;
+          left: 43px;
         }
 
         .gear {
@@ -78,8 +91,38 @@ ul.past-work {
         margin: 23px 0 0 38px;
       }
 
+      // Logos sized per-card in resume.js (logoWidth), centered in the brand box.
+      .logo-fit {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img { height: auto; max-height: 64px; object-fit: contain; }
+      }
+
+      .text-logo {
+        width: 70px;
+        height: 70px;
+        margin: 15px 0 0 25px;
+        border-radius: 50%;
+        background-color: #B4241F;
+        color: whitesmoke;
+        font-weight: 700;
+        font-size: 1.125rem;
+        letter-spacing: 0.03em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
 
     }
+  }
+
+  .card-header-title {
+    font-size: $type-sm;
+    line-height: 1.4;
   }
 
   .card-header-icon {
@@ -90,22 +133,22 @@ ul.past-work {
     background-color: rgba(#B4241F, 0.01);
 
     .business-detail {
-      letter-spacing: 0.3px;
-      font-size: 18px;
+      letter-spacing: 0.02em;
+      font-size: $type-md;
       line-height: 1.7;
       padding: 1em;
       font-weight: 500;
     }
 
     .responsibilities {
-      letter-spacing: -0.1px;
-      font-size: 16px;
+      letter-spacing: -0.006em;
+      font-size: $type-base;
       font-weight: 300;
       line-height: 1.8;
 
       h3 {
-        font-size: 22px;
-        letter-spacing: -0.2px;
+        font-size: $type-xl;
+        letter-spacing: -0.01em;
         padding: 1em 0;
         font-weight: 300;
       }
@@ -186,10 +229,14 @@ ul.past-work {
   }
 
   .card-footer {
+      // Sit above anything a tech logo offset might overlap.
+      position: relative;
+      z-index: 1;
       border-bottom: 1px solid #B4241F;
       border-top: 1px solid #B4241F;
 
       .card-footer-item {
+        font-size: $type-sm;
         color: azure;
         background-color: rgba(#B4241F,0.63);
 
@@ -202,9 +249,28 @@ ul.past-work {
           border-right: 1px solid rgba(#B4241F, 0.5);
         }
 
-        a {
+        // The whole red bar is the button, not just the word inside it.
+        padding: 0;
+
+        > span {
+          display: flex;
+          flex: 1;
+          align-self: stretch;
+        }
+
+        a, .coming-soon {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 2.75rem;
+          padding: 0.75rem;
           color: azure;
           font-weight: 700;
+        }
+
+        .coming-soon {
+          cursor: default;
         }
       }
     }
@@ -224,4 +290,73 @@ ul.past-work {
 #inner_remaining {
   background-color: #DDDDDD;
   flex-grow : 1;
+}
+
+// Tablet: tighten the spacing between logo and title.
+@media screen and (max-width: 1024px) {
+  ul.past-work .card-header .brand {
+    margin-right: 1rem;
+  }
+}
+
+// Mobile: logo on the left, title over dates, chevron on the right.
+@media screen and (max-width: 640px) {
+  .layout h1 {
+    padding: 1em;
+  }
+
+  #inner_fixed {
+    height: auto;
+  }
+
+  ul.past-work {
+    .card-header {
+      height: auto;
+      min-height: 72px;
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      grid-template-areas:
+        "brand title icon"
+        "brand time  icon";
+      align-items: center;
+      column-gap: 0.75rem;
+      padding: 0.5rem 0.75rem;
+
+      .brand {
+        grid-area: brand;
+        margin-right: 0;
+        zoom: 0.556; // 115px brand box -> 64px, keeps every logo's hand-tuned offsets
+      }
+
+      .card-header-title {
+        grid-area: title;
+        align-self: end;
+        padding: 0;
+      }
+
+      .timeframe {
+        grid-area: time;
+        align-self: start;
+        margin-top: 0.25rem;
+      }
+
+      .card-header-icon {
+        grid-area: icon;
+        padding: 0 0.25rem;
+      }
+    }
+
+    .card-content {
+      padding: 1rem;
+
+      .business-detail {
+        padding: 0 0 0.5rem;
+      }
+
+      .tech-utilized {
+        flex-wrap: wrap;
+        zoom: 0.6;
+      }
+    }
+  }
 }
