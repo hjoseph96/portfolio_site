@@ -37,7 +37,9 @@
     "node": "24.x"
   },
   "scripts": {
+    "prebuild": "node scripts/stage-unity.js",
     "build": "gatsby build",
+    "predevelop": "node scripts/stage-unity.js",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
