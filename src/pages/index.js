@@ -10,6 +10,7 @@ import Navbar from "../components/navbar"
 import Resume from '../components/resume';
 import Contact from '../components/contact';
 import UnityLoader from '../components/unity-loader';
+import '../components/unity-stage.scss';
 
 
 class Index extends React.Component {
@@ -61,9 +62,11 @@ class Index extends React.Component {
             <meta name="description" content="Herbert Joseph - Senior Software Engineer - Rubyist" />
         </Helmet>
 
-        {this.state.displayUnityCanvas && (
-          <Unity unityContent={this.state.unityContent} />
-        )}
+        <div className="unity-stage">
+          {this.state.displayUnityCanvas && (
+            <Unity unityContent={this.state.unityContent} />
+          )}
+        </div>
 
         <UnityLoader
           progress={this.state.unityProgress}
