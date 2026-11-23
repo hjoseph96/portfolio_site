@@ -42,7 +42,7 @@ const recentWork = [
     key: 'makeshift-software',
     logo: makeshiftSoftwareLogo,
     logoWidth: 108,
-    title: 'Makeshift Software - Chief Executive Officer',
+    title: 'Makeshift Software - CEO',
     start: 'December 2015',
     end: 'Current',
     detail: 'Makeshift Software Inc. is a software venture studio developing products across social networking, local commerce, and games.',
@@ -79,10 +79,13 @@ const recentWork = [
     title: 'Senpai - Founder',
     start: 'April 2023',
     end: 'Current',
-    detail: 'Senpai is a mobile dating app for anime fans on iOS and Android.',
+    detail: 'Senpai is a social and dating app for anime fans on iPhone, where 30K+ fans match, post, and make anime with people who watch what they watch. Live in English, Japanese, Spanish, and Portuguese.',
     responsibilities: [
-      'Built Rails 8.1 GraphQL API from the ground up',
-      'Managed engineering team of 4 engineers',
+      'Founded Senpai and lead product across Match, the Feed, Reels, avatars, and AI-generated anime shorts.',
+      'Built the Rails 8.1 GraphQL API from the ground up, powering taste-based matching on users\' top ten anime, verified accounts, and avatar-powered live video.',
+      'Shipped an in-app pipeline that turns a text prompt into a 5-30 second anime short (art, motion, and sound) and posts it straight to the feed.',
+      'Launched live convention floor maps so fans can find their crew, check panel queues, and plan their day at events.',
+      'Managed an engineering team of 4 engineers.',
     ],
     tech: ['ruby'],
     url: 'https://senpaiapp.com',
@@ -107,7 +110,7 @@ const recentWork = [
     key: 'fohamu',
     logo: fohamuLogo,
     logoWidth: 78,
-    title: 'Focus Haitian Music - Chief Technology Officer',
+    title: 'Focus Haitian Music - CTO',
     start: 'February 2021',
     end: 'Current',
     detail: 'Focus Haitian Music Inc. (FOHAMU) is a charitable, tax-exempt 501(c)(3) organization dedicated to the growth and empowerment of Haitian youth and creating a brighter future for Haiti\'s tomorrow.',
@@ -123,7 +126,7 @@ const recentWork = [
     key: 'makeshift-records',
     logo: makeshiftRecordsLogo,
     logoWidth: 59,
-    title: 'Makeshift Records - Chief Executive Officer',
+    title: 'Makeshift Records - CEO',
     start: 'July 2026',
     end: 'Current',
     detail: 'Makeshift Records is an independent label blending live mocap concerts, Spotify growth strategy, and full-service distribution to launch artists across every streaming platform.',
@@ -420,11 +423,7 @@ class Resume extends React.Component {
                 <div className="collapsible-card is-hidden">
                   <div className="card-content">
                     <p className="business-detail">
-                      KitSplit is a rental platform for filmmakers and digital content creators. Independent filmmakers looking to rent equipment for their shoots,
-                      youtube creators looking to rent equipment for their videos, and more are the typical audience. Gear owners list their equipment on the platform,
-                      renters select their pickup & drop-off dates and pay by the day.
-
-                      AirBnB for camera and film equipment rentals.
+                      AirBnB for Cameras.
                     </p>
 
                     <div className="responsibilities">
